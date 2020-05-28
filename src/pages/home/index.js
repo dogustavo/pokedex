@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import style from './style';
 import searchIcon from '../../assets/search/search.png';
+import Menu from '../../components/menu/menu';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
                     <Image source={searchIcon}/>
                 </TouchableOpacity>
             </View>
+            <Menu/>
         </View>
     )
 }

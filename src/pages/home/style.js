@@ -9,7 +9,8 @@ const style = StyleSheet.create({
         marginTop: 20,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: 20
     },
     discoverText: {
         fontSize: 32,
