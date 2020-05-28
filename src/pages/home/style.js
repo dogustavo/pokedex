@@ -6,12 +6,14 @@ const style = StyleSheet.create({
         padding: '5%'
     },
     headerContainer: {
-        marginTop: 20
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     discoverText: {
-        fontSize: 30,
+        fontSize: 32,
         fontWeight: 'bold',
-
     }
 })
 
