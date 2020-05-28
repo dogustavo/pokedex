@@ -4,6 +4,9 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import style from './style';
 import searchIcon from '../../assets/search/search.png';
 import Menu from '../../components/menu/menu';
+import Pokemons from '../pokemons';
+import Berries from '../berries';
+import Items from '../items';
 
 const Home = () => {
     const [ pressed, setPressed ] = useState('Pokemons');
@@ -17,6 +20,14 @@ const Home = () => {
                 </TouchableOpacity>
             </View>
             <Menu pressed={pressed} setPressed={setPressed}/>
+
+            {
+                pressed === 'Pokemons'
+                ? <Pokemons/>
+                : pressed === 'Berries'
+                ? <Berries/>
+                : <Items/>
+            }
         </View>
     )
 }
