@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import style from './style';
@@ -6,6 +6,8 @@ import searchIcon from '../../assets/search/search.png';
 import Menu from '../../components/menu/menu';
 
 const Home = () => {
+    const [ pressed, setPressed ] = useState('Pokemons');
+
     return (
         <View style={style.container}>
             <View style={style.headerContainer}>
@@ -14,7 +16,7 @@ const Home = () => {
                     <Image source={searchIcon}/>
                 </TouchableOpacity>
             </View>
-            <Menu/>
+            <Menu pressed={pressed} setPressed={setPressed}/>
         </View>
     )
 }

@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import style from './style';
 
-const Home = () => {
-    const [ pressed, setPressed ] = useState('Pokemons');
+const Home = props => {
 
     const handleClick = (text) => {
-        setPressed(text);
+        props.setPressed(text);
     }
 
     const carouselMenu = [
@@ -32,13 +31,13 @@ const Home = () => {
                 carouselMenu.map(menu => (
                     <TouchableOpacity onPress={() => handleClick(menu.name)} key={menu.id}>
                         <Text 
-                            style={pressed == menu.name ? style.menuTextPressed : style.menuText}
+                            style={props.pressed == menu.name ? style.menuTextPressed : style.menuText}
 
                         >
                             {menu.name}
                         </Text>
 
-                        <Text style={pressed == menu.name ? style.selected : ''}/>
+                        <Text style={props.pressed == menu.name ? style.selected : ''}/>
                     </TouchableOpacity>
                 ))
             }
