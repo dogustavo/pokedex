@@ -5,31 +5,23 @@ const style = StyleSheet.create({
         flex: 1,
         marginRight: 30,
         borderWidth: 0.5,
-        borderColor: 'rgba(204, 204, 2204, 0.3)',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 2,
+        borderColor: 'rgba(0, 0, 0, 0.7)',
+        borderWidth: 1,
+        borderRadius: 20,
         height: '60%',
         width: 200,
-        
         
     },
     cardWrap: {
         width: '100%',
         height: '100%',
-        alignItems: 'center',
+        alignItems: 'center', 
         justifyContent: 'center',
-
-        
     },
     pokemonImage: {
         width: 150, 
-        height: 150
+        height: 150,
+        marginBottom: 20
     },
     pokemonName: {
         fontSize: 20,
