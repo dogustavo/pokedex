@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import PokemonCard from '../../components/card';
-import { View, Text } from 'react-native';
+import { View, FlatList } from 'react-native';
 
 const Pokemons = () => {
     const [ pokeData, setPokeData ] = useState([]);
@@ -24,32 +24,22 @@ const Pokemons = () => {
         
     }
 
-    // const fetchPokemonInfo = () => {
-    //     data.map(pokemon => (
-    //         fetch(pokemon.url)
-    //             .then(res => res.json())
-    //             .then(async pokemonInfo =>            
-    //                 await setPokeData(pokemonInfo) 
-    //             )
-    //     ))
-    // }
-
     useEffect(() => {
         fetchPokemons();
     }, [])
     
     
     return (
-        <>
+        <View>
             {
-                pokeData.map(pokemon => (
+                pokeData.map((pokemon, id) => (
                     <PokemonCard 
-                        key={pokemon.order}
+                        key={id}
                         pokemon={pokemon}
                     />
                 ))
             }
-        </>
+        </View>
     )
 }
 
