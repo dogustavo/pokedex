@@ -26,11 +26,11 @@ const TYPE_COLORS = {
 };
 
 const PokemonCard = props => {
-    console.log(props.pokemon.name);
+    // console.log(props.pokemon.name);
         
     return (
-        <View style={style.container}>
-            <TouchableOpacity style={style.cardWrap}>
+        <TouchableOpacity style={style.container}>
+            <View style={style.cardWrap}>
                 <Image source={pokemonBg} style={style.backgroundCard}/>
                 <View style={style.WrapImage}>
                     <Image 
@@ -58,8 +58,8 @@ const PokemonCard = props => {
                             ))
                         }
                     </View>
-            </TouchableOpacity>
-        </View>
+            </View>
+        </TouchableOpacity>
     )
 }
 

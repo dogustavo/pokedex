@@ -5,7 +5,7 @@ const style = StyleSheet.create({
         flex: 1,
         marginRight: 30,
         borderRadius: 30,
-        height: '60%',
+        height: '100%',
         width: 230,
 
         shadowColor: "#000",
