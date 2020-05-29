@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { View, ScrollView, Text } from 'react-native';
 
 import PokemonCard from '../../components/card';
-import { View, FlatList } from 'react-native';
+import style from './style';
+
 
 const Pokemons = () => {
     const [ pokeData, setPokeData ] = useState([]);
@@ -30,7 +32,7 @@ const Pokemons = () => {
     
     
     return (
-        <View>
+        <View style={style.container}>
             {
                 pokeData.map((pokemon, id) => (
                     <PokemonCard 
