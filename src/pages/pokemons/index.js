@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView, SafeAreaView } from 'react-native';
 
 import PokemonCard from '../../components/card';
 import style from './style';
@@ -32,16 +32,23 @@ const Pokemons = () => {
     
     
     return (
-        <View style={style.container}>
-            {
-                pokeData.map((pokemon, id) => (
-                    <PokemonCard 
-                        key={id}
-                        pokemon={pokemon}
-                    />
-                ))
-            }
-        </View>
+        <SafeAreaView style={{flex: 1}}>
+            <View style={style.container}>
+                <ScrollView 
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                >
+                    {
+                        pokeData.map((pokemon, id) => (
+                            <PokemonCard 
+                                key={id}
+                                pokemon={pokemon}
+                            />
+                        ))
+                    }
+                </ScrollView>
+            </View>
+        </SafeAreaView>
     )
 }
 
