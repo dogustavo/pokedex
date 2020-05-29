@@ -9,8 +9,7 @@ const style = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 20,
         height: '60%',
-        width: 200,
-        
+        width: 230,
     },
     cardWrap: {
         width: '100%',
@@ -26,6 +25,22 @@ const style = StyleSheet.create({
     pokemonName: {
         fontSize: 20,
         fontWeight: 'bold',
+        marginBottom: 20
+    },
+    typesWrap: {
+        width: '60%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: "space-around"
+    },
+    tyepes: {
+        height: 20,
+        width: 65,
+        alignSelf: 'center',
+        textAlign: 'center',
+        borderRadius: 65 / 2,
+        color: 'white',
+        fontWeight: 'bold'
     }
 })
 

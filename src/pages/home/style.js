@@ -17,6 +17,7 @@ const style = StyleSheet.create({
         fontSize: 32,
         fontWeight: 'bold',
     }
+    
 })
 
 export default style;
