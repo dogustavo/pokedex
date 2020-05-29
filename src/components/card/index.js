@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 
 import style from './style';
+import pokemonBg from '../../assets/pokemon.jpg'
 
 const TYPE_COLORS = {
     bug: '#B1C12E',
@@ -25,13 +26,21 @@ const TYPE_COLORS = {
 };
 
 const PokemonCard = props => {
-    console.log(props.pokemon);
+    console.log(props.pokemon.name);
         
     return (
         <View style={style.container}>
             <TouchableOpacity style={style.cardWrap}>
-                <Image source={{uri: `https://pokeres.bastionbot.org/images/pokemon/${props.pokemon.id}.png`}} style={style.pokemonImage} />
-                <Text style={style.pokemonName}>#{props.pokemon.order} - {props.pokemon.name.toUpperCase()}</Text>
+                <Image source={pokemonBg} style={style.backgroundCard}/>
+                <View style={style.WrapImage}>
+                    <Image 
+                        source={{uri: `https://pokeres.bastionbot.org/images/pokemon/${props.pokemon.id}.png`}} 
+                        style={style.pokemonImage} 
+                    />
+                </View>
+                <View style={style.wrapName}>
+                    <Text style={style.pokemonName}>#{props.pokemon.order} - {props.pokemon.name.toUpperCase()}</Text>
+                </View>
                     <View style={style.typesWrap}>
                         {
                             props.pokemon.types.map((type, id) => (     
