@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginRight: 30
     },
     cardWrap: {
         width: '100%',
@@ -10,6 +11,12 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: 'center',
         position: 'relative'
+    },
+    cardShimmer: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        borderRadius: 20,
     },
     pokemonCard: {
         backgroundColor: '#DDD',

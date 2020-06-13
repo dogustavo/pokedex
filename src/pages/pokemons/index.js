@@ -9,6 +9,7 @@ import style from './style';
 const Pokemons = () => {
     const [ pokeData, setPokeData ] = useState([]);
     const [ loading, setloading ] = useState(true);
+    const [ visible, setVisible ] = useState(false);
 
     const initialUrl = 'https://pokeapi.co/api/v2/pokemon';
 
@@ -19,36 +20,46 @@ const Pokemons = () => {
                 pokemons.results.map(pokemon => (
                     fetch(pokemon.url)
                         .then(res => res.json())
-                        .then(pokemonInfo =>            
-                            setPokeData(value => [...value, pokemonInfo])                            
-                        )
+                        .then(pokemonInfo => {            
+                            setPokeData(value => [...value, pokemonInfo])
+                            setloading(false)                            
+                        })
                 ))
             })
-        
     }
 
     useEffect(() => {
         fetchPokemons();
+        if(loading === false) {
+            setVisible(true)
+        }
     }, [])
     
+    console.log(loading);
     
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={style.topContainer}>
-                <PokemonShimmer/>
-                {/* <ScrollView 
+                <ScrollView 
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
-                >
+                    >
+                    
                     {
-                        pokeData.map((pokemon, id) => (
-                            <PokemonCard 
-                                key={id}
-                                pokemon={pokemon}
-                            />
-                        ))
+                        loading === true ?
+                            <>
+                                <PokemonShimmer visible={visible}/>
+                                <PokemonShimmer visible={visible}/>
+                            </>
+                        :
+                            pokeData.map((pokemon, id) => (
+                                <PokemonCard 
+                                    key={id}
+                                    pokemon={pokemon}
+                                />
+                            ))
                     }
-                </ScrollView> */}
+                </ScrollView>
             </View>
             <View style={style.bottomContainer}>
                 <Text style={style.bottomTitle}>Iniciais</Text>
