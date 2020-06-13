@@ -3,8 +3,8 @@ import { View, ScrollView, SafeAreaView, Text } from 'react-native';
 
 import PokemonCard from '../../components/card';
 import FooterCard from '../../components/footerCard';
+import PokemonShimmer from '../../components/pokemonShimmer';
 import style from './style';
-
 
 const Pokemons = () => {
     const [ pokeData, setPokeData ] = useState([]);
@@ -35,7 +35,8 @@ const Pokemons = () => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={style.topContainer}>
-                <ScrollView 
+                <PokemonShimmer/>
+                {/* <ScrollView 
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                 >
@@ -47,7 +48,7 @@ const Pokemons = () => {
                             />
                         ))
                     }
-                </ScrollView>
+                </ScrollView> */}
             </View>
             <View style={style.bottomContainer}>
                 <Text style={style.bottomTitle}>Iniciais</Text>
