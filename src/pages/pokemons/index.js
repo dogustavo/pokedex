@@ -1,49 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import { View, ScrollView, SafeAreaView, Text } from 'react-native';
+import axios from 'axios';
 
 import PokemonCard from '../../components/card';
 import FooterCard from '../../components/footerCard';
 import PokemonShimmer from '../../components/pokemonShimmer';
 import style from './style';
+import { Value } from 'react-native-reanimated';
 
 const Pokemons = () => {
     const [ pokeData, setPokeData ] = useState([]);
-    const [ loading, setloading ] = useState(true);
-    const [ visible, setVisible ] = useState(false);
-
-    const initialUrl = 'https://pokeapi.co/api/v2/pokemon';
+    const [ currentPage, setCurrrentPage ] = useState('https://pokeapi.co/api/v2/pokemon')
+    const [ next, setNext ]         = useState('');
+    const [ loading, setLoading ]   = useState(true);
+    const [ visible, setVisible ]   = useState(false);
 
     const fetchPokemons = () => {
-        fetch(`${initialUrl}`)
-            .then(res => res.json())
-            .then(async pokemons => {              
-                pokemons.results.map(pokemon => (
-                    fetch(pokemon.url)
-                        .then(res => res.json())
-                        .then(pokemonInfo => {            
-                            setPokeData(value => [...value, pokemonInfo])
-                            setloading(false)                            
+        axios.get(currentPage)
+            .then(res => {
+                setNext(res.data.next)
+                res.data.results.map(pokemon => (
+                    axios.get(pokemon.url)
+                        .then(res => {
+                            setPokeData(value => [ ...value, res.data ])
+                            setLoading(false)
                         })
                 ))
             })
     }
+    // const fetchPokemons = () => {
+    //     fetch(currentPage, {signal})
+    //         .then(res => res.json())
+    //         .then(async pokemons => {
+    //             setNext(pokemons.next);
+    //             setPrevious(pokemons.previous);             
+    //             pokemons.results.map(pokemon => (
+    //                 fetch(pokemon.url)
+    //                     .then(res => res.json())
+    //                     .then(pokemonInfo => {            
+    //                         setPokeData(value => [...value, pokemonInfo])
+    //                         setloading(false)                            
+    //                     })
+    //             ))
+    //         })
+    // }
+
+    const onMomentumScrollEnd = () => {
+        console.log('chegou');
+
+        goToNextPage()
+    }
+
+    const goToNextPage = () => {setCurrrentPage(next)}
 
     useEffect(() => {
         fetchPokemons();
         if(loading === false) {
             setVisible(true)
         }
-    }, [])
-    
-    console.log(loading);
+
+    }, [currentPage])
     
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={style.topContainer}>
                 <ScrollView 
                     horizontal={true}
+                    onMomentumScrollEnd={onMomentumScrollEnd}
                     showsHorizontalScrollIndicator={false}
-                    >
+                >
                     
                     {
                         loading === true ?
