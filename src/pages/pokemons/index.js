@@ -11,6 +11,7 @@ const Pokemons = () => {
     const [ pokeData, setPokeData ] = useState([]);
     const [ currentPage, setCurrrentPage ] = useState('https://pokeapi.co/api/v2/pokemon')
     const [ next, setNext ]         = useState('');
+    const [ previous, setPrevious ] = useState('')
     const [ loading, setLoading ]   = useState(true);
     const [ visible, setVisible ]   = useState(false);
 
@@ -29,8 +30,10 @@ const Pokemons = () => {
     }
 
     const handleLoadMore = () => {
+        setLoading(true)
         setCurrrentPage(next)
     }
+
     useEffect(() => {
         fetchPokemons();
 
@@ -52,6 +55,7 @@ const Pokemons = () => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={style.topContainer}>
+
                 <FlatList
                     data={pokeData}
                     renderItem={renderPokemons}
@@ -61,23 +65,23 @@ const Pokemons = () => {
                     showsHorizontalScrollIndicator={false}
 
                     onEndReached={handleLoadMore}
-                    onEndReachedThreshold={0.4} 
+                    onEndReachedThreshold={0.4}
 
-                    // onMomentumScrollEnd={onMomentumScrollEnd}
                     ListEmptyComponent={loading ? loadingPlaceholder : <></>}
                     ListFooterComponent={loading ? scrollFooter : <></>}
                 />
+
             </View>
             <View style={style.bottomContainer}>
                 <Text style={style.bottomTitle}>Iniciais</Text>
-                    {
+                    {/* {
                         pokeData.map((pokemon, id) => (
                             <FooterCard
                                 key={id}
                                 pokemon={pokemon}
                             />
                         ))
-                    }
+                    } */}
             </View>
         </SafeAreaView>
     )
