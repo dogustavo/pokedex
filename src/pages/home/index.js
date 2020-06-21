@@ -5,7 +5,7 @@ import style from './style';
 import searchIcon from '../../assets/search/search.png';
 import Menu from '../../components/menu/menu';
 import Pokemons from '../pokemons';
-import Berries from '../berries';
+import PokeDolar from '../pokeDolar';
 import Items from '../items';
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
                 pressed === 'Pokemons'
                 ? <Pokemons/>
                 : pressed === 'PokeDolar'
-                ? <Berries/>
+                ? <PokeDolar/>
                 : <Items/>
             }
         </View>
