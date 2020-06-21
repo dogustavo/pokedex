@@ -24,7 +24,7 @@ const Home = () => {
             {
                 pressed === 'Pokemons'
                 ? <Pokemons/>
-                : pressed === 'Berries'
+                : pressed === 'PokeDolar'
                 ? <Berries/>
                 : <Items/>
             }

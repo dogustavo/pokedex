@@ -16,7 +16,7 @@ const Home = props => {
         },
         {
             id: 2,
-            name: 'Berries'
+            name: 'PokeDolar'
         },
         {
             id: 3,
